@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Material+Symbols+Outlined" rel="stylesheet">
+<style>
+/* ===== PALET (ubah warna di sini) ===== */
+:root{--paper:#f3f6f4;--ink:#0c2438;--mu:#4a6072;--card:#fff;--ln:#d4dde3;--grid:rgba(12,36,56,.07);
+--cobalt:#2457c5;--teal:#0fa3a0;--lime:#9bc53d;--amber:#f0a92e;--red:#e2552d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#08151f;--ink:#e4eef5;--mu:#94a9b8;--card:#0f2231;--ln:#23394a;--grid:rgba(255,255,255,.05)}}
+:root[data-theme="dark"]{--paper:#08151f;--ink:#e4eef5;--mu:#94a9b8;--card:#0f2231;--ln:#23394a;--grid:rgba(255,255,255,.05)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.65;overflow-x:hidden;
+background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/32px 32px,var(--paper)}
+h1,h2,h3,.lg{font-family:'Space Grotesk',sans-serif}
+.ms{font-family:'Material Symbols Outlined';font-weight:400;font-style:normal;line-height:1;display:inline-block;font-size:28px;white-space:nowrap;font-feature-settings:'liga'}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:8px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;gap:20px;padding:12px clamp(16px,4vw,48px);background:color-mix(in srgb,var(--paper) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700}
+.lg{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;font-size:20px;background:linear-gradient(135deg,var(--cobalt),var(--teal))}
+nav{display:flex;gap:4px;margin-left:auto}
+nav a{padding:8px 14px;border-radius:8px;color:var(--mu);font-weight:600;font-size:14px}
+nav a:hover{color:var(--ink);background:var(--grid)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;background:var(--ink);color:var(--paper);font-weight:600;border:1.5px solid var(--ink)}
+.btn.o{background:transparent;color:var(--ink)}
+@media(max-width:820px){nav{display:none}header .btn{margin-left:auto}}
+/* hero */
+.hero{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:20px;padding:50px 24px 30px;min-height:calc(100vh - 62px)}
+h1{font-size:clamp(36px,5.6vw,70px);line-height:1.04;margin:0 0 20px;letter-spacing:-.025em}
+.hero p{font-size:clamp(16px,1.8vw,19px);color:var(--mu);max-width:520px;margin:0 0 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:820px){.hero{grid-template-columns:1fr;min-height:0;padding-top:36px}}
+/* scene 3D */
+.scene{position:relative;height:min(540px,62vh);perspective:1300px;display:grid;place-items:center}
+.world{position:relative;width:min(300px,64vw);aspect-ratio:1;transform-style:preserve-3d;will-change:transform}
+.slab{position:absolute;inset:0;border-radius:8px;border:1px solid rgba(255,255,255,.55);opacity:.92;
+background:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px) 0 0/30px 30px,linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px) 0 0/30px 30px,var(--c);
+transform:translateZ(calc(var(--i)*var(--gap)*-1px))}
+.el{position:absolute;top:50%;left:var(--x);width:0;height:0;transform-style:preserve-3d;transform:translateZ(1px)}
+.post{position:absolute;left:-3px;top:-70px;width:6px;height:70px;border-radius:3px;transform-origin:50% 100%;transform:rotateX(-90deg);background:linear-gradient(#fff,var(--ink))}
+.rip{position:absolute;left:-28px;top:-28px;width:56px;height:56px;border-radius:50%;border:2px solid var(--teal);opacity:0;display:none;animation:rp 2.6s ease-out infinite;animation-delay:var(--dl)}
+[data-step="1"] .rip,[data-step="2"] .rip{display:block}
+@keyframes rp{0%{transform:scale(.2);opacity:.95}100%{transform:scale(2.8);opacity:0}}
+.leg{width:min(300px,70%);margin:-10px auto 0;font-size:12px;color:var(--mu);display:flex;justify-content:space-between}
+.bar{height:8px;border-radius:4px;width:min(300px,70%);margin:6px auto 0;background:linear-gradient(90deg,var(--cobalt),var(--teal),var(--lime),var(--amber),var(--red))}
+/* alur */
+.flow{height:700vh;position:relative}
+.pin{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;height:100svh;max-width:1200px;margin:0 auto;padding:70px 24px 20px;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:20px}
+.steps{position:relative;height:240px}
+.step{position:absolute;inset:0;opacity:0;transform:translateX(-18px);transition:opacity .6s,transform .6s}
+.step.on{opacity:1;transform:none}
+.step h2{font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0 0 14px;letter-spacing:-.015em}
+.step p{color:var(--mu);max-width:440px;margin:0;font-size:17px}
+@media(max-width:820px){.pin{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);padding:72px 20px 24px;gap:34px}.steps{height:210px}.step h2{font-size:26px}.step p{font-size:15px}.pin .scene{height:100%;min-height:240px}.hero .scene{height:min(380px,46svh)}}
+/* proyek */
+section.s{padding:90px 24px}
+.wrap{max-width:1100px;margin:0 auto}
+h2.t{font-size:clamp(28px,4.4vw,48px);line-height:1.1;margin:0 0 12px;letter-spacing:-.015em}
+.sub{color:var(--mu);max-width:560px;margin:0 0 40px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.pc{background:var(--card);border:1px solid var(--ln);border-top:5px solid var(--c);border-radius:14px;padding:28px;transform-style:preserve-3d;will-change:transform}
+.ic{width:62px;height:62px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--c);transform:translateZ(36px);box-shadow:0 16px 26px -10px var(--c)}
+.ic .ms{font-size:32px}
+.pc h3{font-size:21px;margin:20px 0 8px;transform:translateZ(22px)}
+.pc p{color:var(--mu);margin:0 0 16px;font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{padding:3px 11px;border-radius:6px;border:1px solid var(--ln);font-size:13px;font-weight:600;color:var(--mu)}
+.pc a.ln{display:inline-block;margin-top:14px;font-weight:600;color:var(--c)}
+/* atom */
+.dark{background:radial-gradient(70% 90% at 50% 100%,#13405a,transparent),#071a2b;color:#e4eef5;text-align:center}
+.dark .sub{color:#a9bccb;margin:0 auto}
+.atom{position:relative;height:480px;margin-top:10px}
+.atom canvas{position:absolute;inset:0;width:100%;height:100%}
+.nuc{position:absolute;left:50%;top:50%;width:88px;height:88px;margin:-44px;border-radius:50%;display:grid;place-items:center;font:700 40px 'Space Grotesk';background:radial-gradient(circle at 35% 30%,#7fe3df,var(--teal) 55%,var(--cobalt));box-shadow:0 0 70px rgba(15,163,160,.65)}
+.chip{position:absolute;left:0;top:0;padding:8px 16px;border-radius:8px;white-space:nowrap;font-weight:600;font-size:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px);will-change:transform}
+details{border-bottom:1px solid var(--ln);padding:20px 4px}
+summary{cursor:pointer;font:500 19px 'Space Grotesk';list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-size:26px;line-height:1;color:var(--cobalt);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mu);margin:12px 0 0;max-width:640px}
+.end{text-align:center;background:var(--card);border:1px solid var(--ln);border-radius:20px;max-width:1100px;margin:0 auto;padding:64px 24px}
+footer{text-align:center;color:var(--mu);font-size:14px;padding:30px 20px 50px}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
+.two h3{margin:0 0 14px;font-size:22px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.facts{display:grid;gap:14px}
+.fc{background:var(--card);border:1px solid var(--ln);border-left:5px solid var(--c);border-radius:12px;padding:16px 20px}
+.fc b{display:block;font:700 28px 'Space Grotesk'}.fc span{color:var(--mu);font-size:14px}
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:34px}
+.tl h3{margin:0 0 18px;font-size:22px}
+.tl ol{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--ln)}
+.tl li{position:relative;padding:0 0 22px 14px}
+.tl li::before{content:"";position:absolute;left:-30px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px var(--paper)}
+.tl li b{display:block}.tl li small{color:var(--c);font-weight:600}.tl li span{display:block;color:var(--mu);font-size:14px}
+.pr{list-style:none;margin:0;padding:0}.pr li a{color:var(--cobalt);text-decoration:underline;text-underline-offset:3px}.pr li a::after{content:" ↗";white-space:nowrap}
+.pr li{margin:0 0 12px;padding-left:16px;border-left:3px solid var(--teal);color:var(--mu);font-size:15px}
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px;text-align:left}
+.sg{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:22px}
+.sg h3{margin:0 0 6px;font-size:18px}
+.sg .tags{margin-top:12px}.sg .tags span{border-color:rgba(255,255,255,.25);color:#cfe0ec}
+.lv{display:flex;justify-content:space-between;font-size:14px;margin-top:14px}.lv span{color:#a9bccb}
+.sgm{display:flex;gap:4px;margin-top:6px}.sgm i{flex:1;height:7px;border-radius:4px;background:rgba(255,255,255,.15)}
+.sgm i.on{background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform .6s calc(var(--n)*.12s)}.go .sgm i.on{transform:none}
+.scene::before{content:"";position:absolute;inset:4%;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--gl,#2457c5) 26%,transparent),transparent)}
+.cap{text-align:center;font:600 16px 'Space Grotesk';color:var(--mu);min-height:26px}
+.dots{position:absolute;left:0;bottom:-30px;display:flex;gap:8px}
+.dots i{width:26px;height:4px;border-radius:2px;background:var(--ln);transition:background .4s}.dots i.on{background:var(--c,var(--cobalt))}
+[hidden]{display:none!important}
+.hero,.flow{overflow-x:clip}
+.gy{display:flex;margin:10px auto 0}
+@media(max-width:820px){section.s{padding:64px 20px}.atom{height:400px}}
+@media(max-width:600px){.chip{font-size:12px;padding:5px 10px}.logo span:last-child{font-size:14px}header{gap:10px}header .btn{padding:9px 14px;font-size:14px}.fc b{font-size:24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+//profil
+img{max-width:100%;height:auto}
+.me{width:500px;height:500px;max-width:500px;border-radius:50%;object-fit:cover;border:4px solid var(--card);box-shadow:0 12px 30px -12px rgba(0,0,0,.35);margin-bottom:18px}
+.pf{width:100%;max-height:240px;aspect-ratio:16/10;object-fit:cover;border-radius:10px;margin-bottom:18px}
+.gal img{width:100%;max-height:260px;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid var(--ln)}
+//align
+#tentang .tt{max-width:760px;margin:0 auto 40px;text-align:center}
+#tentang .tt .sub{max-width:none;margin:0}
+#tentang .row{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:stretch}
+#tentang .pic{display:grid;place-items:center}
+#tentang .me{width:min(400px,100%);height:auto;aspect-ratio:1/1;object-fit:cover;object-position:top;border-radius:50%}
+#tentang .facts{grid-auto-rows:1fr}
+#tentang .fc{display:flex;flex-direction:column;justify-content:center}
+@media(max-width:820px){#tentang .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#top"><span class="lg">ρ</span><span id="nm"></span></a>
+  <nav><a href="#tentang">Tentang</a><a href="#alur">Sains</a><a href="#proyek">Proyek</a><a href="#perjalanan">Perjalanan</a><a href="#keahlian">Keahlian</a></nav>
+  <a class="btn" href="#kontak">Hubungi saya</a>
+</header>
+<main id="top">
+  <section class="hero">
+    <div><h1 id="jd"></h1><p id="ds"></p><div class="cta"><a class="btn" href="#proyek">Lihat proyek</a><a class="btn o" href="#alur">Jelajahi sains</a></div></div>
+    <div><div class="scene" id="s1"></div><div class="cap" id="cap"></div></div>
+  </section>
+  <section class="s" id="tentang"><div class="wrap">
+  <div class="tt"><h2 class="t">Tentang saya</h2><p class="sub" id="tp"></p></div>
+  <div class="row">
+    <div class="pic"><img class="me" src="foto/ranir3.png" alt="Foto Ranir Atfar R"></div>
+    <div class="facts" id="fk"></div>
+  </div>
+</div></section>
+
+  <section class="s" id="belajar" style="padding-top:0"><div class="wrap"><h2 class="t">Fast Learner & Mudah Beradaptasi</h2><p class="sub">Bukti nyata dari kuliah, lapangan, dan organisasi.</p><div class="grid" id="bl"></div></div></section>
+  <section class="flow" id="alur"><div class="pin"><div class="steps" id="st"></div><div class="scene" id="s2"></div></div></section>
+  <section class="s" id="proyek"><div class="wrap"><h2 class="t">Proyek</h2><p class="sub">Arahkan kursor ke kartu untuk memiringkannya.</p><div class="grid" id="pj"></div></div></section>
+  <section class="s" id="perjalanan"><div class="wrap"><h2 class="t">Perjalanan</h2><p class="sub">Pendidikan, pengalaman lapangan, dan organisasi.</p><div class="tl" id="tl"></div></div></section>
+  <section class="s" id="prestasi" style="padding-top:10px"><div class="wrap"><h2 class="t">Prestasi dan karya</h2><div class="two" style="margin-top:30px"><div><h3>Prestasi</h3><ul class="pr" id="pz"></ul></div><div><h3>Publikasi dan HKI</h3><ul class="pr" id="kr"></ul></div></div></div></section>
+  <section class="s dark" id="keahlian"><div class="wrap"><h2 class="t">Satu orang, banyak bidang</h2><p class="sub">Sains, teknologi, desain, dan bahasa. Saya memadukannya dalam satu pekerjaan.</p><div class="atom" id="atom"><canvas></canvas><div class="nuc">ρ</div></div><div class="sk" id="sk"></div></div></section>
+  <section class="s" id="faq"><div class="wrap" style="max-width:780px"><h2 class="t">Pertanyaan umum</h2><div id="fq"></div></div></section>
+  <section class="s" id="kontak" style="padding-top:10px"><div class="end"><h2 class="t">Mari berkolaborasi</h2><p class="sub" style="margin:0 auto 26px">Punya survei, alat, atau aplikasi yang ingin diwujudkan? Ceritakan kebutuhanmu.</p><a class="btn" id="em"><span class="ms" style="font-size:22px">mail</span>Kirim pesan</a><p class="sub" style="margin:22px auto 0">Instagram <a href="https://instagram.com/atfar.rnr" target="_blank" rel="noopener"><b>@atfar.rnr</b></a> dan YouTube <a href="https://www.youtube.com/@atfarrnr" target="_blank" rel="noopener"><b>atfarrnr</b></a></p></div></section>
+</main>
+<footer id="ft"></footer>
+
+<script>
+/* ============================================================
+   CONFIG — SEMUA ISI WEB ADA DI SINI. Cukup ubah teks di bawah.
+   Menambah proyek: salin satu blok { ... } di "proyek", tempel
+   setelah koma, lalu ganti isinya. Nama ikon: fonts.google.com/icons
+   ============================================================ */
+const CONFIG={
+  nama:'Ranir Atfar R, S.Si.',
+  email:'raniratfar254@gmail.com',
+  judul:'Dari atom hingga menjadi data',
+  deskripsi:'Saya Ranir Atfar R, S.Si., lulusan S1 Fisika dengan IPK 4.00. Saya cepat belajar dan terbiasa berpindah antarbidang: fisika, elektronika, pemrograman, desain grafis, dan bahasa asing.',
+  // Tahap animasi sains saat scroll. Urutan bentuk 3D di kode: atom, kristal, gelombang, bumi, data, koil, simpul.
+  langkah:[
+    {judul:'Fisika kuantum',isi:'Elektron mengorbit inti. Saya memodelkan struktur materi dengan Quantum Espresso dan Burai.',warna:'#2457c5'},
+    {judul:'Material dan kristal',isi:'Atom yang tersusun teratur menentukan sifat bahan. Saya meneliti karakterisasi material ZnO/TiO2.',warna:'#0fa3a0'},
+    {judul:'Gelombang dan medan',isi:'Fisika gelombang dan medan menjadi dasar banyak metode geofisika.',warna:'#1b9ad6'},
+    {judul:'Bumi dan satelit',isi:'Citra satelit dan data geolistrik saya padukan untuk memetakan zona rawan longsor dan tsunami.',warna:'#2e9e5b'},
+    {judul:'Data dan visualisasi',isi:'Data lapangan diolah menjadi permukaan tiga dimensi dengan Surfer, Voxler, IPI2WIN, dan Python.',warna:'#e2552d'},
+    {judul:'Elektronika dan IoT',isi:'Arduino dan data logger membuat alat ukur mencatat data sendiri, seperti Smart Georesistivitas berbasis IoT.',warna:'#d98a0b'},
+    {judul:'Kode dan desain',isi:'HTML, JavaScript, dan Python untuk aplikasi; Illustrator dan Canva untuk tampilan yang enak dilihat.',warna:'#8e5bd8'}
+  ],
+  proyek:[
+    {ikon:'sensors',warna:'#2457c5',judul:'Resistivity Meter IoT',isi:'Alat ukur geolistrik berbasis IoT dengan data logger. Proposal kolaborasinya telah diajukan ke Pemkab Luwu Timur.',tag:['Geolistrik','Instrument','IoT','Data logger'],link:'https://drive.google.com/file/d/1Dry5mLAs33eqRZPBO8hrV9gZ_NVzRCaX/view?usp=sharing'},
+    {ikon:'photo_library',warna:'#0fa3a0',judul:'SwipeStudio',isi:'Aplikasi desktop untuk memilah foto dengan gestur swipe, lengkap dengan penyimpanan keputusan.',tag:['Python','pywebview','SQLite'],link:'https://drive.google.com/file/d/1vDmuEPKBkBvP7l63T-zbDA__kw_LFZOe/view?usp=drive_link'},
+    {ikon:'smart_toy',warna:'#8e5bd8',judul:'Bot Whatsapp',isi:'Bot WhatsApp ...',tag:['Bot','Automation','JavaScript'],link:'https://wa.me/6289515891956?text=.menu'},
+    {ikon:'文',warna:'#893bd8',judul:'Flashcard Mandalish',isi:'Website untuk latihan flashcard',tag:['Learning','HTML','CSS'],link:'https://flaschard-mandalish.vercel.app'},
+    {ikon:'swap_horiz',warna:'#e2552d',judul:'Universal Media & File Converter',isi:'Satu aplikasi untuk mengonversi berbagai media dan berkas, termasuk Excel ke PDF.',tag:['Python','pywebview'],link:'https://drive.google.com/file/d/1CHATFEvRuCfWEIOgCCLCw9dkf8I61YKG/view?usp=drive_link'}
+  ],
+  tentang:'Lulusan S1 Fisika Universitas Cokroaminoto Palopo dan penerima Beasiswa Luwu Timur Juara. Saya terbiasa mempelajari hal baru secara mandiri, mulai dari bahasa asing, pemrograman, sampai desain grafis, lalu menerapkannya di riset, lapangan industri, dan kepemimpinan organisasi.',
+  fakta:[['4.00','IPK S1 Fisika','#2457c5'],['8 bahasa','Indonesia, Inggris, Mandarin, Python, JavaScript, C++, CSS, HTML','#0fa3a0'],['4 HKI','Karya tulis, peta, program komputer, dan alat peraga','#e2552d'],['5 Publikasi','Sinta 3 - Sinta 5','#d98a0b']],
+  // Bukti cepat belajar dan adaptif: [warna, ikon, judul, isi]
+  belajar:[
+    ['#2457c5','school','Belajar mandiri','Inggris dan Spanyol saya pelajari sendiri, dan Mandarin sudah sampai HSK 3.'],
+    ['#0fa3a0','sync_alt','Mudah beradaptasi','Dari laboratorium kampus dan praktikum lapang geolistrik sampai praktik kerja di PT Vale Indonesia Tbk.'],
+    ['#e2552d','construction','Menguasai banyak alat','Surfer, IPI2WIN, Voxler, ArcGIS, Quantum Espresso, Arduino, dan Python.'],
+    ['#d98a0b','groups','Tumbuh di organisasi','Di HMPS-Fisika: anggota, lalu ketua bidang humas dan advokasi, lalu ketua umum.']
+  ],
+  // Perjalanan: [judul kolom, warna, [[waktu, judul, keterangan], ...]]
+  perjalanan:[
+    ['Pendidikan','#2457c5',[['2022–2026','S1 Fisika, Universitas Cokroaminoto Palopo','IPK 4.00'],['2019–2022','SMAN 1 Luwu Timur','Jurusan IPA'],['2016–2019','SMPN 4 Malili',''],['2010–2016','SDN 224 Lampia','']]],
+    [
+  'Pengalaman',
+  '#0fa3a0',
+  [
+    ['September 2026','Penyedia Jasa Pemetaan Akuifer Tanah, PT Masmindo Dwi Area','Melaksanakan survei dan akuisisi data resistivitas bawah permukaan menggunakan metode geolistrik untuk pemetaan akuifer air tanah guna mendukung perencanaan pembangunan permanent camp.'],
+    ['Mei–Juni 2025','Praktik Kerja Lapang, PT Vale Indonesia Tbk','Utilities Engineering Reliability & Maintenance System: analisis efisiensi electric boiler dan pengolahan data dengan Excel.'],
+    ['2025','Asisten Laboratorium','FSAINS, Universitas Cokroaminoto Palopo.'],
+    ['April–Agustus 2024','Ketua Tim PKM-RE','Program Kreativitas Mahasiswa Riset Eksakta, memperoleh pendanaan.'],
+    ['September–Desember 2024','Anggota Kosabangsa Smartano','Penguatan Desa Matano melalui teknologi inovatif.'],
+    ['Juni 2024','Operator Resistivity Meter','Praktikum Lapang Geolistrik.']
+  ]
+],
+    ['Organisasi HMPS-Fisika','#e2552d',[['2024–2025','Ketua Umum','Memimpin seluruh program kerja dan mengambil keputusan strategis'],['2023–2024','Ketua Bidang Humas dan Advokasi','Mengelola komunikasi dengan pihak eksternal'],['2022–2023','Anggota','']]]
+  ],
+  prestasi:['Juara I Mahasiswa Teladan Putra tingkat Universitas, Fakultas Sains, dan Program Studi (2025)','Penerima Beasiswa Luwu Timur Juara','Peraih pendanaan bidang PKM-RE (2024)','Mahasiswa Berprestasi Bidang Kemahasiswaan (2024)','Finalis Duta HIV Kota Palopo (2024)','Peserta PILMAPRES Wilayah IX','Narasumber PKKMB UNCP (2024)','Pemateri Latihan Kepemimpinan Mahasiswa HMPS-Fisika (2023 dan 2024)'],
+  // Karya: ['judul','https://link']. Isi link supaya judulnya bisa diklik; kosongkan ('') kalau belum ada.
+  karya:[
+    ['HKI Karya Tulis: Pemanfaatan Citra Satelit dan Data Geolistrik untuk Zonasi Daerah Rawan Longsor di Kecamatan Walenrang Barat, Kabupaten Luwu',''],
+    ['HKI Peta: Peta Kerawanan Tsunami Kawasan Wisata Desa Matano',''],
+    ['HKI Program Komputer: Rancang Bangun Sistem Informasi SMARTANO Desa Matano',''],
+    ['HKI Alat Peraga: Smart Georesistivitas Berbasis IoT',''],
+    ['Artikel: Purwarupa Sistem Informasi Desa Matano (Smartano) untuk pemasaran lada dan promosi wisata',''],
+    ['Artikel: Sosialisasi dan pelatihan mitigasi bencana gempa bumi dan tsunami di Desa Matano',''],
+    ['Artikel: Pelatihan pengelolaan limbah lada menjadi pupuk kompos',''],
+    ['Artikel: Karakterisasi material ZnO/TiO2','']
+  ],
+  // Bahasa: [nama, keterangan, tingkat 1-6]
+  bahasa:[['Indonesia','Aktif',6],['Inggris','Menengah ke atas',4],['Mandarin','HSK 3',3],['Spanyol','Dasar',2]],
+  kelompok:[['Pemrograman',['HTML','Python','JavaScript','C++','Arduino']],['Desain grafis',['Editing desain grafis','Adobe Illustrator','Canva','IbisPaint']],['Perangkat lunak sains',['ArcGIS','Surfer','IPI2WIN','Voxler','MAG2DC','Quantum Espresso','Burai']],['Data dan statistik',['Microsoft Excel','Google Spreadsheet']],['Soft skill',['Kepemimpinan','Komunikasi','Disiplin','Kerja tim','Teliti','Adaptif']]],
+  keahlian:['Geolistrik','IoT','Python','JavaScript','HTML','C++','Desain grafis','Mandarin HSK 3','English'],
+  faq:[
+    ['Apa yang bisa dikerjakan bersama Ranir?','Pengembangan alat ukur geolistrik berbasis IoT, data logger, dan aplikasi desktop Python sesuai kebutuhanmu.'],
+    ['Bahasa dan alat apa yang dikuasai?','Mandarin (HSK 3), Inggris menengah ke atas, pemrograman HTML, Python, dan JavaScript, serta editing desain grafis.'],
+    ['Di wilayah mana Ranir bekerja?','Fokus wilayah kerja saat ini adalah Kabupaten Luwu Timur, Sulawesi Selatan.'],
+    ['Bagaimana cara berkolaborasi?','Tekan tombol Hubungi saya, lalu ceritakan kebutuhan dan lokasi pekerjaanmu.']
+  ]
+};
+
+/* ---------- 1. Isi teks dari CONFIG ---------- */
+const $=(s,r=document)=>r.querySelector(s),clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+document.title='Portofolio '+CONFIG.nama;
+$('#nm').textContent=CONFIG.nama;$('#jd').textContent=CONFIG.judul;$('#ds').textContent=CONFIG.deskripsi;
+$('#em').href='mailto:'+CONFIG.email;$('#ft').textContent='© 2026 '+CONFIG.nama;
+$('#st').innerHTML=CONFIG.langkah.map((l,i)=>`<div class="step${i?'':' on'}"><h2>${l.judul}</h2><p>${l.isi}</p></div>`).join('');
+$('#pj').innerHTML=CONFIG.proyek.map(p=>`<article class="pc" style="--c:${p.warna}"><div class="ic"><span class="ms">${p.ikon}</span></div><h3>${p.judul}</h3><p>${p.isi}</p><div class="tags">${p.tag.map(t=>`<span>${t}</span>`).join('')}</div>${p.link?`<a class="ln" href="${p.link}" target="_blank" rel="noopener">Lihat proyek ↗</a>`:''}</article>`).join('');
+$('#tp').textContent=CONFIG.tentang;
+$('#fk').innerHTML=CONFIG.fakta.map(f=>`<div class="fc" style="--c:${f[2]}"><b>${f[0]}</b><span>${f[1]}</span></div>`).join('');
+$('#tl').innerHTML=CONFIG.perjalanan.map(b=>`<div style="--c:${b[1]}"><h3>${b[0]}</h3><ol>${b[2].map(i=>`<li><b>${i[1]}</b><small>${i[0]}</small>${i[2]?`<span>${i[2]}</span>`:''}</li>`).join('')}</ol></div>`).join('');
+$('#bl').innerHTML=CONFIG.belajar.map(b=>`<article class="pc" style="--c:${b[0]}"><div class="ic"><span class="ms">${b[1]}</span></div><h3>${b[2]}</h3><p>${b[3]}</p></article>`).join('');
+$('#pz').innerHTML=CONFIG.prestasi.map(x=>`<li>${x}</li>`).join('');
+$('#kr').innerHTML=CONFIG.karya.map(x=>{const[j,l]=Array.isArray(x)?x:[x,''];return `<li>${l?`<a href="${l}" target="_blank" rel="noopener">${j}</a>`:j}</li>`}).join('');
+$('#sk').innerHTML=`<div class="sg" style="--c:#0fa3a0"><h3>Bahasa</h3>${CONFIG.bahasa.map(b=>`<div class="lv"><b>${b[0]}</b><span>${b[1]}</span></div><div class="sgm">${[1,2,3,4,5,6].map(n=>`<i class="${n<=b[2]?'on':''}" style="--n:${n}"></i>`).join('')}</div>`).join('')}</div>`+CONFIG.kelompok.map(k=>`<div class="sg"><h3>${k[0]}</h3><div class="tags">${k[1].map(t=>`<span>${t}</span>`).join('')}</div></div>`).join('');
+new IntersectionObserver(([e])=>{if(e.isIntersecting)$('#sk').classList.add('go')},{threshold:.15}).observe($('#sk'));
+$('#fq').innerHTML=CONFIG.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('');
+
+/* ---------- 2. Awan partikel sains: berubah bentuk mengikuti scroll ---------- */
+let sd=7;const rnd=()=>(sd=sd*16807%2147483647)/2147483647,TAU=6.2832,mobile=innerWidth<700,N=mobile?900:1500;
+const sph=r=>{const a=rnd()*TAU,b=Math.acos(2*rnd()-1);return[r*Math.sin(b)*Math.cos(a),r*Math.sin(b)*Math.sin(a),r*Math.cos(b)]};
+const SH=[
+ (u,i)=>{if(u<.1)return sph(.14*Math.cbrt(rnd()));const a=rnd()*TAU,t=(i%3)*2.094,x=.9*Math.cos(a),y=.9*Math.sin(a)*.45,z=.9*Math.sin(a)*.89;return[x*Math.cos(t)-y*Math.sin(t),x*Math.sin(t)+y*Math.cos(t),z]}, // atom
+ (u,i)=>{const n=11;return[(i%n/(n-1)*2-1)*.8,(Math.floor(i/n)%n/(n-1)*2-1)*.8,(Math.floor(i/(n*n))%n/(n-1)*2-1)*.8]}, // kristal
+ (u,i)=>{const g=Math.ceil(Math.sqrt(N)),x=(i%g/g*2-1)*.9,z=(Math.floor(i/g)/g*2-1)*.9,r=Math.hypot(x,z);return[x,.3*Math.sin(r*9)*Math.exp(-r*.7),z]}, // gelombang
+ (u,i)=>{if(i%12==0){const a=rnd()*TAU;return[1.15*Math.cos(a),.3*Math.sin(a),1.15*Math.sin(a)]}const y=1-2*u,r=Math.sqrt(1-y*y),f=i*2.39996;return[.95*r*Math.cos(f),.95*y,.95*r*Math.sin(f)]}, // bumi + satelit
+ (u,i)=>{const g=Math.ceil(Math.sqrt(N)),x=(i%g/g*2-1)*.9,z=(Math.floor(i/g)/g*2-1)*.9;return[x,.8*Math.exp(-((x-.35)**2+(z+.2)**2)*6)+.55*Math.exp(-((x+.45)**2+(z-.3)**2)*8)-.3,z]}, // permukaan data
+ u=>{const a=u*TAU,b=u*TAU*14,r=.7+.28*Math.cos(b);return[r*Math.cos(a),.28*Math.sin(b),r*Math.sin(a)]}, // koil elektronika
+ u=>{const t=u*TAU,q=(2+Math.cos(3*t))*.34,d=sph(.05);return[q*Math.cos(2*t)+d[0],q*Math.sin(2*t)+d[1],.34*Math.sin(3*t)+d[2]]} // simpul desain
+];
+const STG=CONFIG.langkah,NS=STG.length;
+const TG=SH.map(fn=>{const a=new Float32Array(N*3);for(let i=0;i<N;i++)a.set(fn(i/N,i),i*3);return a});
+const HS=Float32Array.from({length:N},rnd),RGB=STG.map(s=>[1,3,5].map(k=>parseInt(s.warna.substr(k,2),16)));
+function Cloud(host){
+  const cv=document.createElement('canvas'),g=cv.getContext('2d');cv.style.cssText='position:absolute;inset:-14%;width:128%;height:128%;pointer-events:none';host.appendChild(cv);let w=1,h=1;
+  const rs=()=>{const d=Math.min(devicePixelRatio||1,2);w=host.clientWidth*1.28;h=host.clientHeight*1.28;cv.width=w*d;cv.height=h*d;g.setTransform(d,0,0,d,0,0)};addEventListener('resize',rs);rs();
+  return{draw(ia,ib,f,ry,rx){
+    const A=TG[ia],B=TG[ib],c=RGB[ia].map((v,k)=>(v+(RGB[ib][k]-v)*f)|0),col=`rgb(${c[0]},${c[1]},${c[2]})`,sc=Math.min(w,h)/1.28*.27,cr=Math.cos(ry),sr=Math.sin(ry),cq=Math.cos(rx),sq=Math.sin(rx);
+    host.style.setProperty('--gl',col);g.clearRect(0,0,w,h);g.fillStyle=col;
+    for(let k=0;k<N;k++){const j=k*3,q=clamp((f-HS[k]*.5)/.5),e=q*q*(3-2*q),m=4*e*(1-e)*.2;
+      const x=A[j]+(B[j]-A[j])*e+Math.sin(k)*m,y=A[j+1]+(B[j+1]-A[j+1])*e+Math.cos(k*1.3)*m,z=A[j+2]+(B[j+2]-A[j+2])*e;
+      const x1=x*cr+z*sr,z1=z*cr-x*sr,y1=y*cq-z1*sq,z2=y*sq+z1*cq,p=5/(5-z2),sz=(1.1+1.5*p)*(mobile?.9:1);
+      g.globalAlpha=clamp(.3+(z2+1)*.35,.2,1);g.fillRect(w/2+x1*sc*p-sz/2,h/2+y1*sc*p-sz/2,sz,sz)}
+    g.globalAlpha=1}}
+}
+const S1=$('#s1'),S2=$('#s2'),ALUR=$('#alur'),C1=Cloud(S1),C2=Cloud(S2),steps=document.querySelectorAll('.step'),cap=$('#cap');
+const dots=document.createElement('div');dots.className='dots';dots.innerHTML=STG.map(()=>'<i></i>').join('');$('#st').appendChild(dots);
+
+/* ---------- 3. Kartu proyek miring 3D (dihaluskan) ---------- */
+const cards=[...document.querySelectorAll('.pc')].map(el=>{const c={el,x:0,y:0,tx:0,ty:0};
+  el.addEventListener('pointermove',e=>{const b=el.getBoundingClientRect();c.tx=(e.clientX-b.left)/b.width-.5;c.ty=(e.clientY-b.top)/b.height-.5});
+  el.addEventListener('pointerleave',()=>{c.tx=c.ty=0});return c});
+
+/* ---------- 4. Atom keahlian ---------- */
+const at=$('#atom'),cv=$('canvas',at),g=cv.getContext('2d'),RG=[[1.2,0],[1.2,1.05],[1.2,2.1]];let W=0,H=0,R=0;
+const chips=CONFIG.keahlian.map(t=>{const d=document.createElement('div');d.className='chip';d.textContent=t;at.appendChild(d);return d});
+function rs(){const d=devicePixelRatio||1;W=at.clientWidth;H=at.clientHeight;cv.width=W*d;cv.height=H*d;g.setTransform(d,0,0,d,0,0);R=Math.min(W*(W<500?.27:.42),H*.4)}
+addEventListener('resize',rs);rs();
+function pt(k,a,ry,rx){let x=R*Math.cos(a),y=R*Math.sin(a),z=0;const[tx,tz]=RG[k];
+  let y1=y*Math.cos(tx),z1=y*Math.sin(tx);y=y1;z=z1;
+  let x1=x*Math.cos(tz)-y*Math.sin(tz);y1=x*Math.sin(tz)+y*Math.cos(tz);x=x1;y=y1;
+  x1=x*Math.cos(ry)+z*Math.sin(ry);z1=-x*Math.sin(ry)+z*Math.cos(ry);x=x1;z=z1;
+  y1=y*Math.cos(rx)-z*Math.sin(rx);z1=y*Math.sin(rx)+z*Math.cos(rx);y=y1;z=z1;
+  const f=900/(900+z);return[W/2+x*f,H/2+y*f,f]}
+
+/* ---------- 5. Loop animasi (inilah yang membuat gerakan halus) ---------- */
+const P={x:0,y:0,cx:0,cy:0};let sp1=0,sp2=0,cur=-1;
+let gy=null;   // sensor gerak (giroskop)
+addEventListener('pointermove',e=>{if(gy&&e.pointerType!=='mouse')return;P.x=e.clientX/innerWidth-.5;P.y=e.clientY/innerHeight-.5});
+function onOri(e){if(e.beta==null||e.gamma==null)return;
+  const a=(screen.orientation?screen.orientation.angle:window.orientation)||0;let x=e.gamma,y=e.beta;
+  if(a==90){x=e.beta;y=-e.gamma}else if(a==270||a==-90){x=-e.beta;y=e.gamma}else if(a==180){x=-e.gamma;y=-e.beta}
+  if(!gy)gy={x0:x,y0:y};                                   // posisi netral = cara kamu memegang HP saat sensor pertama terbaca
+  gy.x0+=(x-gy.x0)*.0005;gy.y0+=(y-gy.y0)*.0005;           // netral pelan-pelan menyesuaikan
+  P.x=clamp((x-gy.x0)/40,-1,1)*.5;P.y=clamp((y-gy.y0)/40,-1,1)*.5}   // 40 = derajat miring untuk gerak penuh (kecil = lebih sensitif)
+const gb=$('#gyro'),startGy=()=>addEventListener('deviceorientation',onOri);
+if(!rm&&'DeviceOrientationEvent' in window){
+  if(typeof DeviceOrientationEvent.requestPermission==='function'){   // iOS meminta izin lewat tombol
+    if(matchMedia('(pointer:coarse)').matches){gb.hidden=false;gb.onclick=()=>DeviceOrientationEvent.requestPermission().then(r=>{if(r==='granted'){startGy();gb.hidden=true}else gb.textContent='Izin sensor ditolak'}).catch(()=>{gb.textContent='Sensor tidak tersedia'})}
+  }else startGy()}   // Android dan lainnya langsung aktif
+function frame(t){
+  const s=rm?0:t/1000;
+  P.cx+=(P.x-P.cx)*.05;P.cy+=(P.y-P.cy)*.05;           // pointer dihaluskan (lerp)
+  const hr=S1.getBoundingClientRect();
+  if(hr.bottom>0&&hr.top<innerHeight){const q=s/3.2,a=Math.floor(q)%NS,b=(a+1)%NS,f=clamp((q-Math.floor(q)-.5)/.5);   // hero: berganti bentuk otomatis
+    C1.draw(a,b,f,s*.28+P.cx*1.3,.28+P.cy*.8);const nm=STG[f>.5?b:a].judul;if(cap.textContent!==nm)cap.textContent=nm}
+  const fr=ALUR.getBoundingClientRect(),tp=clamp(-fr.top/(fr.height-innerHeight));sp2+=(tp-sp2)*.07;   // sains: mengikuti scroll
+  if(fr.bottom>0&&fr.top<innerHeight){const x=sp2*(NS-1),i=Math.min(NS-2,Math.floor(x)),f=clamp((x-i-.3)/.4);
+    C2.draw(i,i+1,f,.4+sp2*TAU*1.1+P.cx*1.1,.3+P.cy*.7);
+    const n=Math.round(i+f);if(n!==cur){cur=n;steps.forEach((e,j)=>e.classList.toggle('on',j===n));dots.style.setProperty('--c',STG[n].warna);[...dots.children].forEach((d,j)=>d.classList.toggle('on',j<=n))}}
+  cards.forEach(c=>{c.x+=(c.tx-c.x)*.1;c.y+=(c.ty-c.y)*.1;c.el.style.transform=`perspective(900px) rotateY(${c.x*14}deg) rotateX(${-c.y*14}deg)`});
+  const ar=at.getBoundingClientRect();
+  if(ar.bottom>0&&ar.top<innerHeight){
+    g.clearRect(0,0,W,H);const ry=s*.25+P.cx*1.4,rx=.35+P.cy*.9;
+    g.lineWidth=1;g.strokeStyle='rgba(180,225,235,.3)';
+    for(let k=0;k<3;k++){g.beginPath();for(let i=0;i<=80;i++){const[x,y]=pt(k,i/80*6.2832,ry,rx);i?g.lineTo(x,y):g.moveTo(x,y)}g.stroke()}
+    chips.forEach((c,i)=>{const k=i%3,[x,y,f]=pt(k,s*(k==1?-.5:.45)+(i-k)/3*6.2832/Math.ceil((chips.length-k)/3)+k*1.1,ry,rx);
+      c.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%) scale(${f})`;c.style.opacity=clamp((f-.78)/.4,.35,1)});
+  }
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
